@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LogicLayer", "LogicLayer", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panda.Database", "LogicLayer\Panda.Database\Panda.Database.csproj", "{1C9E8FE9-9301-47DE-8388-E453B4322C3B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Panda.Database.Models", "LogicLayer\Panda.Database.Models\Panda.Database.Models.csproj", "{840FF0E6-DE77-467D-8508-B24DA35ABB3F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -25,6 +27,10 @@ Global
 		{1C9E8FE9-9301-47DE-8388-E453B4322C3B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1C9E8FE9-9301-47DE-8388-E453B4322C3B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1C9E8FE9-9301-47DE-8388-E453B4322C3B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{840FF0E6-DE77-467D-8508-B24DA35ABB3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{840FF0E6-DE77-467D-8508-B24DA35ABB3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{840FF0E6-DE77-467D-8508-B24DA35ABB3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{840FF0E6-DE77-467D-8508-B24DA35ABB3F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -32,6 +38,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{CD8BB18D-0E00-453C-A3BD-62C6528507E6} = {050E3DB3-9B67-495E-AFB1-799993C7C451}
 		{1C9E8FE9-9301-47DE-8388-E453B4322C3B} = {0CFC82D2-C1C1-4C84-9084-AE921D16FBC6}
+		{840FF0E6-DE77-467D-8508-B24DA35ABB3F} = {0CFC82D2-C1C1-4C84-9084-AE921D16FBC6}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {61BF01E4-0427-473C-9502-6F302F965A35}
