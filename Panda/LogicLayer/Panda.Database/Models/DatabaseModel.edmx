@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="PandaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomertId" />
+          </Key>
+          <Property Name="CustomertId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="100" />
+          <Property Name="FirstName" Type="varchar" MaxLength="100" />
+          <Property Name="Surname" Type="varchar" MaxLength="100" />
+          <Property Name="Email" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Localizations">
+          <Key>
+            <PropertyRef Name="LocalizationId" />
+          </Key>
+          <Property Name="LocalizationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Adress" Type="varchar" MaxLength="100" />
+          <Property Name="Country" Type="varchar" MaxLength="100" />
+          <Property Name="Region" Type="varchar" MaxLength="100" />
+          <Property Name="City" Type="varchar" MaxLength="100" />
+          <Property Name="Latitude" Type="int" />
+          <Property Name="Longtitude" Type="int" />
+        </EntityType>
+        <EntityType Name="OrderProducts">
+          <Key>
+            <PropertyRef Name="OrderProductId" />
+          </Key>
+          <Property Name="OrderProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrderId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomertId" Type="int" />
+          <Property Name="Status" Type="int" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="DiscountPrice" Type="decimal" Precision="18" Scale="0" />
+          <Property Name="ShopId" Type="int" />
+        </EntityType>
+        <EntityType Name="Shops">
+          <Key>
+            <PropertyRef Name="ShopId" />
+          </Key>
+          <Property Name="ShopId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="Description" Type="varchar" MaxLength="100" />
+          <Property Name="LocalizationId" Type="int" />
+        </EntityType>
+        <Association Name="FK__OrderProd__Order__1DE57479">
+          <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+          <End Role="OrderProducts" Type="Self.OrderProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderProducts">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderProd__Produ__1CF15040">
+          <End Role="Products" Type="Self.Products" Multiplicity="0..1" />
+          <End Role="OrderProducts" Type="Self.OrderProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderProducts">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Orders__Customer__145C0A3F">
+          <End Role="Customers" Type="Self.Customers" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomertId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CustomertId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Products__ShopId__1A14E395">
+          <End Role="Shops" Type="Self.Shops" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Products" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shops">
+              <PropertyRef Name="ShopId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="ShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shops__Localizat__173876EA">
+          <End Role="Localizations" Type="Self.Localizations" Multiplicity="0..1" />
+          <End Role="Shops" Type="Self.Shops" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localizations">
+              <PropertyRef Name="LocalizationId" />
+            </Principal>
+            <Dependent Role="Shops">
+              <PropertyRef Name="LocalizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PandaModelStoreContainer">
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Localizations" EntityType="Self.Localizations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrderProducts" EntityType="Self.OrderProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Shops" EntityType="Self.Shops" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__OrderProd__Order__1DE57479" Association="Self.FK__OrderProd__Order__1DE57479">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderProducts" EntitySet="OrderProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderProd__Produ__1CF15040" Association="Self.FK__OrderProd__Produ__1CF15040">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderProducts" EntitySet="OrderProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Orders__Customer__145C0A3F" Association="Self.FK__Orders__Customer__145C0A3F">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Products__ShopId__1A14E395" Association="Self.FK__Products__ShopId__1A14E395">
+            <End Role="Shops" EntitySet="Shops" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shops__Localizat__173876EA" Association="Self.FK__Shops__Localizat__173876EA">
+            <End Role="Localizations" EntitySet="Localizations" />
+            <End Role="Shops" EntitySet="Shops" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PandaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomertId" />
+          </Key>
+          <Property Name="CustomertId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Surname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__Customer__145C0A3F" FromRole="Customers" ToRole="Orders" />
+        </EntityType>
+        <EntityType Name="Localization">
+          <Key>
+            <PropertyRef Name="LocalizationId" />
+          </Key>
+          <Property Name="LocalizationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Adress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Country" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Region" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="Int32" />
+          <Property Name="Longtitude" Type="Int32" />
+          <NavigationProperty Name="Shops" Relationship="Self.FK__Shops__Localizat__173876EA" FromRole="Localizations" ToRole="Shops" />
+        </EntityType>
+        <EntityType Name="OrderProduct">
+          <Key>
+            <PropertyRef Name="OrderProductId" />
+          </Key>
+          <Property Name="OrderProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrderId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <NavigationProperty Name="Order" Relationship="Self.FK__OrderProd__Order__1DE57479" FromRole="OrderProducts" ToRole="Orders" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__OrderProd__Produ__1CF15040" FromRole="OrderProducts" ToRole="Products" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomertId" Type="Int32" />
+          <Property Name="Status" Type="Int32" />
+          <NavigationProperty Name="Customer" Relationship="Self.FK__Orders__Customer__145C0A3F" FromRole="Orders" ToRole="Customers" />
+          <NavigationProperty Name="OrderProducts" Relationship="Self.FK__OrderProd__Order__1DE57479" FromRole="Orders" ToRole="OrderProducts" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="DiscountPrice" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ShopId" Type="Int32" />
+          <NavigationProperty Name="OrderProducts" Relationship="Self.FK__OrderProd__Produ__1CF15040" FromRole="Products" ToRole="OrderProducts" />
+          <NavigationProperty Name="Shop" Relationship="Self.FK__Products__ShopId__1A14E395" FromRole="Products" ToRole="Shops" />
+        </EntityType>
+        <EntityType Name="Shop">
+          <Key>
+            <PropertyRef Name="ShopId" />
+          </Key>
+          <Property Name="ShopId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Description" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LocalizationId" Type="Int32" />
+          <NavigationProperty Name="Localization" Relationship="Self.FK__Shops__Localizat__173876EA" FromRole="Shops" ToRole="Localizations" />
+          <NavigationProperty Name="Products" Relationship="Self.FK__Products__ShopId__1A14E395" FromRole="Shops" ToRole="Products" />
+        </EntityType>
+        <Association Name="FK__Orders__Customer__145C0A3F">
+          <End Role="Customers" Type="Self.Customer" Multiplicity="0..1" />
+          <End Role="Orders" Type="Self.Order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Customers">
+              <PropertyRef Name="CustomertId" />
+            </Principal>
+            <Dependent Role="Orders">
+              <PropertyRef Name="CustomertId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Shops__Localizat__173876EA">
+          <End Role="Localizations" Type="Self.Localization" Multiplicity="0..1" />
+          <End Role="Shops" Type="Self.Shop" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Localizations">
+              <PropertyRef Name="LocalizationId" />
+            </Principal>
+            <Dependent Role="Shops">
+              <PropertyRef Name="LocalizationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderProd__Order__1DE57479">
+          <End Role="Orders" Type="Self.Order" Multiplicity="0..1" />
+          <End Role="OrderProducts" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Orders">
+              <PropertyRef Name="OrderId" />
+            </Principal>
+            <Dependent Role="OrderProducts">
+              <PropertyRef Name="OrderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__OrderProd__Produ__1CF15040">
+          <End Role="Products" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="OrderProducts" Type="Self.OrderProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Products">
+              <PropertyRef Name="ProductId" />
+            </Principal>
+            <Dependent Role="OrderProducts">
+              <PropertyRef Name="ProductId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Products__ShopId__1A14E395">
+          <End Role="Shops" Type="Self.Shop" Multiplicity="0..1" />
+          <End Role="Products" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Shops">
+              <PropertyRef Name="ShopId" />
+            </Principal>
+            <Dependent Role="Products">
+              <PropertyRef Name="ShopId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PandaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Localizations" EntityType="Self.Localization" />
+          <EntitySet Name="OrderProducts" EntityType="Self.OrderProduct" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="Shops" EntityType="Self.Shop" />
+          <AssociationSet Name="FK__Orders__Customer__145C0A3F" Association="Self.FK__Orders__Customer__145C0A3F">
+            <End Role="Customers" EntitySet="Customers" />
+            <End Role="Orders" EntitySet="Orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Shops__Localizat__173876EA" Association="Self.FK__Shops__Localizat__173876EA">
+            <End Role="Localizations" EntitySet="Localizations" />
+            <End Role="Shops" EntitySet="Shops" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderProd__Order__1DE57479" Association="Self.FK__OrderProd__Order__1DE57479">
+            <End Role="Orders" EntitySet="Orders" />
+            <End Role="OrderProducts" EntitySet="OrderProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__OrderProd__Produ__1CF15040" Association="Self.FK__OrderProd__Produ__1CF15040">
+            <End Role="Products" EntitySet="Products" />
+            <End Role="OrderProducts" EntitySet="OrderProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Products__ShopId__1A14E395" Association="Self.FK__Products__ShopId__1A14E395">
+            <End Role="Shops" EntitySet="Shops" />
+            <End Role="Products" EntitySet="Products" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="PandaModelStoreContainer" CdmEntityContainer="PandaEntities">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="PandaModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="CustomertId" ColumnName="CustomertId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="Surname" ColumnName="Surname" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Localizations">
+            <EntityTypeMapping TypeName="PandaModel.Localization">
+              <MappingFragment StoreEntitySet="Localizations">
+                <ScalarProperty Name="LocalizationId" ColumnName="LocalizationId" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Region" ColumnName="Region" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="Longtitude" ColumnName="Longtitude" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrderProducts">
+            <EntityTypeMapping TypeName="PandaModel.OrderProduct">
+              <MappingFragment StoreEntitySet="OrderProducts">
+                <ScalarProperty Name="OrderProductId" ColumnName="OrderProductId" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="PandaModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="CustomertId" ColumnName="CustomertId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="PandaModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="DiscountPrice" ColumnName="DiscountPrice" />
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Shops">
+            <EntityTypeMapping TypeName="PandaModel.Shop">
+              <MappingFragment StoreEntitySet="Shops">
+                <ScalarProperty Name="ShopId" ColumnName="ShopId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="LocalizationId" ColumnName="LocalizationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
