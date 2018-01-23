@@ -200,6 +200,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AngularApi\ProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -212,7 +213,9 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Angular-Components\pandaApp - Copy.js" />
+    <Content Include="Angular-Components\product.service.js" />
+    <Content Include="Angular-Components\product-index.controller.js" />
+    <Content Include="Angular-Components\product-create.controller.js" />
     <Content Include="Angular-Components\pandaApp.js" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -286,6 +289,16 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\LogicLayer\Panda.Services\Panda.Services.csproj">
+      <Project>{8E522E22-6C0C-4258-86AC-D5EB57AC4FD6}</Project>
+      <Name>Panda.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Panda.Models\Panda.Models.csproj">
+      <Project>{C2F2372D-1AA4-4849-9B49-9ED8EF68D432}</Project>
+      <Name>Panda.Models</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
