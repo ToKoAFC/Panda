@@ -15,13 +15,16 @@ namespace Panda.Services
 
         public VMProduct GetProduct(int productId)
         {
-            return _context.Products.Where(p => p.ProductId == productId).Select(p => new VMProduct
-            {
-                Description = p.Description,
-                Name = p.Name,
-                Price = p.Price.HasValue ? p.Price.Value : 0,
-                ProductId = p.ProductId
-            }).FirstOrDefault();
+            var product = (from p in _context.Products
+                           where p.ProductId == productId
+                           select new VMProduct
+                           {
+                               Description = p.Description,
+                               Name = p.Name,
+                               Price = p.Price.HasValue ? p.Price.Value : 0,
+                               ProductId = p.ProductId
+                           }).FirstOrDefault();
+            return product;
         }
     }
 }

@@ -27,8 +27,37 @@ namespace Panda.Web
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
+
+            bundles.Add(new StyleBundle("~/Content/angular").Include(
+                      "~/Scripts/angular/angular-material.min.css",
+                      "~/Scripts/angular/angular-material.css",
+                      "~/Scripts/angular/md-data-table.css"
+                ));
+
             bundles.Add(new ScriptBundle("~/bundles/angularJS").Include(
-                "~/Angular-Components/pandaApp.js"));
+                      "~/Scripts/angular/angular.js",
+                      "~/Scripts/angular/angular-route.js",
+                      "~/Scripts/angular/angular-animate.js",
+                      "~/Scripts/angular/angular-aria.js",
+                      "~/Scripts/angular/angular-messages.js",
+                      "~/Scripts/angular/angular-material.js",
+                      "~/Scripts/angular/angular-sanitize.js",
+                      "~/Scripts/angular/angular-material-icons.min.js",
+                      "~/Scripts/angular/angular-nguid.min.js",
+                      "~/Scripts/angular/angular-nguid.js",
+                      "~/Scripts/angular/md-data-table.js",
+                      "~/Content/lodash/lodash.min.js"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/angular-mods").Include(
+                "~/Angular-Components/pandaApp.js",
+                "~/Angular-Components/product.service.js"));
+
+
+            bundles.Add(new ScriptBundle("~/bundles/angular-modules-js").Include(
+                       "~/Angular-Components/product-create.controller.js"
+                      ));
+
         }
     }
 }

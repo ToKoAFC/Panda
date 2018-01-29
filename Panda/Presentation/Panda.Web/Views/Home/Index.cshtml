@@ -1,104 +1,25 @@
 ﻿<div ng-controller="productsCtrl as vm">
-    <md-toolbar>
+    <md-toolbar style="margin-top:60px">
         <div class="md-toolbar-tools">
-            <h2 style="color:white">Create new attribute</h2>
+            <h2 style="color:white">Produkty</h2>
             <span flex></span>
-            <md-button ng-click="vm.backToAttributeList()" class="md-raised">Back to attribute list</md-button>
+
         </div>
     </md-toolbar>
 
     <md-content>
         <md-card>
-            <md-table-container>
-                <div class="df-card-content">
-                    <div layout="row">
-                        <md-input-container class="md-block" flex-gt-sm>
-                            <label>Name</label>
-                            <input type="text" ng-model="vm.Attribute.Name" />
-                        </md-input-container>
-                    </div>
-
-                    <div layout="row">
-                        <md-input-container class="md-block" flex-gt-sm>
-                            <label>Description</label>
-                            <input type="text" ng-model="vm.Attribute.Description" />
-                        </md-input-container>
-                    </div>
-
-                    <div layout="row">
-                        <md-input-container class="md-block" flex-gt-sm>
-                            <md-checkbox ng-model="vm.Attribute.IsRequired">
-                                Required
-                            </md-checkbox>
-                        </md-input-container>
-
-                    </div>
-
-                    <table md-table>
-                        <thead md-head>
-                            <tr md-row>
-                                <th md-column>Name</th>
-                                <th md-column>Description</th>
-                                <th md-column>Multichoice</th>
-                                <th md-column>Type</th>
-                            </tr>
-                        </thead>
-                        <tbody md-body>
-                            <tr md-row ng-repeat="element in vm.Attribute.Elements">
-                                <td md-cell>
-                                    <md-input-container class="md-block" flex-gt-sm>
-                                        <label>Name</label>
-                                        <input type="text" ng-model="element.Name" />
-                                    </md-input-container>
-                                </td>
-                                <td md-cell>
-                                    <md-input-container class="md-block" flex-gt-sm>
-                                        <label>Description</label>
-                                        <input type="text" ng-model="element.Description" />
-                                    </md-input-container>
-                                </td>
-                                <td md-cell>
-                                    <md-input-container class="md-block" flex-gt-sm>
-                                        <md-checkbox ng-model="element.IsMultipleChoice">
-
-                                        </md-checkbox>
-                                    </md-input-container>
-                                </td>
-                                <td md-cell>
-                                    <md-input-container class="md-block" flex-gt-sm>
-                                        <label>Type</label>
-                                        <md-select ng-model="element.Type.AttributeElementTypeId">
-                                            <md-option ng-repeat="type in element.ElementTypes" value="{{type.AttributeElementTypeId}}">
-                                                {{type.Name}}
-                                            </md-option>
-                                        </md-select>
-                                    </md-input-container>
-
-                                </td>
-                                <!--Dictionary-->
-                                <td md-cell>
-                                    <md-input-container class="md-block" flex-gt-sm ng-if="element.Type.AttributeElementTypeId == -1">
-                                        <label>Dictionary</label>
-                                        <md-select ng-model="element.Dictionary.AttributeElementTypeId">
-                                            <md-option ng-repeat="dictionary in element.Dictionaries" value="{{dictionary.AttributeElementTypeId}}">
-                                                {{dictionary.Name}}
-                                            </md-option>
-                                        </md-select>
-                                    </md-input-container>
-                                </td>
-                                <td md-cell>
-                                    <ng-md-icon ng-if="vm.Attribute.Elements.length > 1" ng-click="vm.deleteAttributeElement($event,$index)" icon="delete" style="fill: black" class="md-secondary md-hue-3"></ng-md-icon>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <ng-md-icon ng-click="vm.addAttributeElement($event)" icon="add" style="fill: black" class="md-secondary md-hue-3"></ng-md-icon>
-
-                    <div layout="row" layout-align="end center" flex>
-                        <md-button ng-click="vm.saveAttribute()" class="rsc-btn-success">Save</md-button>
-                    </div>
-                </div>
-            </md-table-container>
+            <md-list>
+                <md-list-item>
+                <md-subheader class="md-no-sticky">Products</md-subheader>
+                <md-list-item ng-repeat="product in vm.products" class="noright">
+                    <img alt="{{ product.name }}" ng-src="{{ product.img }}" class="md-avatar" />
+                    <p>{{ product.name }}</p>
+                    <md-checkbox class="md-secondary" ng-model="person.selected"></md-checkbox>
+                    <md-icon md-svg-icon="communication:email" ng-click="doSecondaryAction($event)" aria-label="Send Email" class="md-secondary md-hue-3"></md-icon>
+                    <md-icon class="md-secondary" ng-click="doSecondaryAction($event)" aria-label="Chat" md-svg-icon="communication:message"></md-icon>
+                </md-list-item>
+            </md-list>
         </md-card>
     </md-content>
 </div>

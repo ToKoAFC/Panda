@@ -2,41 +2,18 @@
     'use strict';
     angular
         .module('pandaApp')
-        .service('productService', ['$http', function ($http) {
+        .service('productService', ['$http', "$rootScope", function ($http, $rootScope) {
 
-            this.GetProductList = function (instanceTypeId) {
+            this.GetProducts = function () {
                 return $http({
                     method: 'POST',
-                    url: '/api/Product/GetProductList'
+                    url: '/api/Product/GetProducts'
                 })
-                    .then(function (data) {
-                        return data;
-                    })
+                    .then(function (response) {
+                        return response.data;
+                    });
             };
-
-            this.GetProduct = function (productId) {
-                return $http({
-                    method: 'POST',
-                    url: '/api/Product/GetProduct',
-                    data: {
-                        ProductId: productId
-                    }
-                })
-                    .then(function (data) {
-                        return data;
-                    })
-            };
-
-            this.SaveProduct = function (productId) {
-                return $http({
-                    method: 'POST',
-                    url: '/api/Product/SaveProduct',
-                    data: {
-                        ProductId: productId
-                    }
-                })
-            };
-
+            
         }]);
 
 })(angular);
