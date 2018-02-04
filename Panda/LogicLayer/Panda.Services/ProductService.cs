@@ -22,7 +22,9 @@ namespace Panda.Services
                                Description = p.Description,
                                Name = p.Name,
                                Price = p.Price.HasValue ? p.Price.Value : 0,
-                               ProductId = p.ProductId
+                               ProductId = p.ProductId,
+                               IsAvailable = p.OrderProducts.Any(),
+                               OrderCounter = p.OrderProducts.Count
                            }).FirstOrDefault();
             return product;
         }

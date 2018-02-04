@@ -213,15 +213,7 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Angular-Components\product.service.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Angular-Components\product-create.controller.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Angular-Components\pandaApp.js">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    <Content Include="Content\angular-material\angular-material.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\lodash\add.js" />
@@ -862,66 +854,30 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Scripts\angular\angular-animate.js" />
-    <Content Include="Scripts\angular\angular-animate.min.js" />
-    <Content Include="Scripts\angular\angular-aria.js" />
-    <Content Include="Scripts\angular\angular-aria.min.js" />
-    <Content Include="Scripts\angular\angular-cookies.js" />
-    <Content Include="Scripts\angular\angular-cookies.min.js" />
-    <Content Include="Scripts\angular\angular-csp.css" />
-    <Content Include="Scripts\angular\angular-loader.js" />
-    <Content Include="Scripts\angular\angular-loader.min.js" />
-    <Content Include="Scripts\angular\angular-material-icons.min.js" />
-    <Content Include="Scripts\angular\angular-material.css" />
-    <Content Include="Scripts\angular\angular-material.js" />
-    <Content Include="Scripts\angular\angular-material.min.js" />
-    <Content Include="Scripts\angular\angular-message-format.js" />
-    <Content Include="Scripts\angular\angular-message-format.min.js" />
-    <Content Include="Scripts\angular\angular-messages.js" />
-    <Content Include="Scripts\angular\angular-messages.min.js" />
-    <Content Include="Scripts\angular\angular-mocks.js" />
-    <Content Include="Scripts\angular\angular-nguid.js" />
-    <Content Include="Scripts\angular\angular-nguid.min.js" />
-    <Content Include="Scripts\angular\angular-parse-ext.js" />
-    <Content Include="Scripts\angular\angular-parse-ext.min.js" />
-    <Content Include="Scripts\angular\angular-resource.js" />
-    <Content Include="Scripts\angular\angular-resource.min.js" />
-    <Content Include="Scripts\angular\angular-route.js" />
-    <Content Include="Scripts\angular\angular-route.min.js" />
-    <Content Include="Scripts\angular\angular-sanitize.js" />
-    <Content Include="Scripts\angular\angular-sanitize.min.js" />
-    <Content Include="Scripts\angular\angular-scenario.js" />
-    <Content Include="Scripts\angular\angular-touch.js" />
-    <Content Include="Scripts\angular\angular-touch.min.js" />
-    <Content Include="Scripts\angular\angular.js" />
+    <Content Include="Scripts\angular-animate\angular-animate.min.js" />
+    <Content Include="Scripts\angular-aria\angular-aria.min.js" />
+    <Content Include="Scripts\angular-material-icons\angular-material-icons.min.js" />
+    <Content Include="Scripts\angular-material\angular-material.js" />
+    <Content Include="Scripts\angular-messages\angular-messages.min.js" />
+    <Content Include="Scripts\angular-route\angular-route.min.js" />
     <Content Include="Scripts\angular\angular.min.js" />
     <Content Include="Scripts\angular\md-data-table.css" />
     <Content Include="Scripts\angular\md-data-table.js" />
     <Content Include="Scripts\angular\md-data-table.min.css" />
     <Content Include="Scripts\angular\md-data-table.min.js" />
-    <Content Include="Scripts\angular\version.txt" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="Scripts\angular\angular-animate.min.js.map" />
-    <Content Include="Scripts\angular\angular-aria.min.js.map" />
-    <Content Include="Scripts\angular\angular-cookies.min.js.map" />
-    <Content Include="Scripts\angular\angular-loader.min.js.map" />
-    <Content Include="Scripts\angular\angular-message-format.min.js.map" />
-    <Content Include="Scripts\angular\angular-messages.min.js.map" />
-    <Content Include="Scripts\angular\angular-parse-ext.min.js.map" />
-    <Content Include="Scripts\angular\angular-resource.min.js.map" />
-    <Content Include="Scripts\angular\angular-route.min.js.map" />
-    <Content Include="Scripts\angular\angular-sanitize.min.js.map" />
-    <Content Include="Scripts\angular\angular-touch.min.js.map" />
-    <Content Include="Scripts\angular\angular.min.js.map" />
-    <Content Include="Scripts\angular\errors.json" />
-    <Content Include="Scripts\angular\version.json" />
     <Content Include="Content\lodash\LICENSE" />
     <Content Include="Content\lodash\package.json" />
     <Content Include="Content\lodash\README.md" />
+    <Content Include="Scripts\angular-animate\angular-animate.min.js.map" />
+    <Content Include="Scripts\angular-aria\angular-aria.min.js.map" />
+    <Content Include="Scripts\angular-messages\angular-messages.min.js.map" />
+    <Content Include="Scripts\angular-route\angular-route.min.js.map" />
+    <Content Include="Scripts\angular\angular.min.js.map" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -930,6 +886,10 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\md-data-table\md-data-table.css" />
+    <Content Include="Scripts\md-data-table\md-data-table.js" />
+    <Content Include="Scripts\md-data-table\md-data-table.min.css" />
+    <Content Include="Scripts\md-data-table\md-data-table.min.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
@@ -969,6 +929,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Angular-Components\" />
     <Folder Include="App_Data\" />
     <Folder Include="Content\lodash\fp\" />
   </ItemGroup>

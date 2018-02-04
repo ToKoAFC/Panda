@@ -27,36 +27,25 @@ namespace Panda.Web
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
 
-
-            bundles.Add(new StyleBundle("~/Content/angular").Include(
-                      "~/Scripts/angular/angular-material.min.css",
-                      "~/Scripts/angular/angular-material.css",
-                      "~/Scripts/angular/md-data-table.css"
-                ));
-
+            
+            //AngularJS scripts
             bundles.Add(new ScriptBundle("~/bundles/angularJS").Include(
-                      "~/Scripts/angular/angular.js",
-                      "~/Scripts/angular/angular-route.js",
-                      "~/Scripts/angular/angular-animate.js",
-                      "~/Scripts/angular/angular-aria.js",
-                      "~/Scripts/angular/angular-messages.js",
-                      "~/Scripts/angular/angular-material.js",
-                      "~/Scripts/angular/angular-sanitize.js",
-                      "~/Scripts/angular/angular-material-icons.min.js",
-                      "~/Scripts/angular/angular-nguid.min.js",
-                      "~/Scripts/angular/angular-nguid.js",
-                      "~/Scripts/angular/md-data-table.js",
-                      "~/Content/lodash/lodash.min.js"
-                ));
+                        "~/Scripts/angular/angular.min.js",
+                        "~/Scripts/angular-route/angular-route.min.js",
+                        "~/Scripts/angular-animate/angular-animate.min.js",
+                        "~/Scripts/angular-aria/angular-aria.min.js",
+                        "~/Scripts/angular-messages/angular-messages.min.js",
+                        "~/Scripts/angular-material/angular-material.js",
+                        "~/Scripts/angular-material-icons/angular-material-icons.min.js",
+                        "~/Scripts/md-data-table/md-data-table.min.js"
 
-            bundles.Add(new ScriptBundle("~/bundles/angular-mods").Include(
-                "~/Angular-Components/pandaApp.js",
-                "~/Angular-Components/product.service.js"));
-
-
-            bundles.Add(new ScriptBundle("~/bundles/angular-modules-js").Include(
-                       "~/Angular-Components/product-create.controller.js"
-                      ));
+            ));
+            //AngularJS stylesheets
+            bundles.Add(new StyleBundle("~/Content/angularJS").Include(
+                      "~/Content/angular-material/angular-material.min.css",
+                      "~/Scripts/md-data-table/md-data-table.min.css"
+            ));
+            
 
         }
     }
